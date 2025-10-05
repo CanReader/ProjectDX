@@ -9,7 +9,8 @@
 #define	DLL_API __declspec(dllimport)
 #endif // ENGINE_EXPORT
 
-
+class Graphics;
+class Game;
 DLL_API class Window
 {
 public:
@@ -25,11 +26,14 @@ public:
 	DLL_API void MessageLoop();
 	static LRESULT CALLBACK WndProc(HWND hWnd,UINT Message, WPARAM wParam, LPARAM lParam);
 private:
-	Window() {}
+	DLL_API Window();
 
 	HWND hWnd;
 
 	DLL_API static std::unique_ptr<Window> TheWindowInstance;
 	DLL_API friend std::unique_ptr<Window> std::make_unique<Window>();
+
+	std::shared_ptr<Graphics> gfx;
+	std::unique_ptr<Game> game;
 };
 

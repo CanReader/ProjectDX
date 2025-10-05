@@ -1,4 +1,4 @@
-#include "../Engine/Window.h"
+#include "Window.h"
 #include <iostream>
 
 int main(int argc, char** argv) {
