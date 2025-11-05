@@ -9,12 +9,12 @@
 
 class MeshData {
 public:
-	MeshData(std::initializer_list<DirectX::XMFLOAT3> verts) : vertices(verts) {}
+	MeshData(std::initializer_list<DirectX::XMFLOAT3> verts) : 
+		vertices(verts) {}
 
 	void SetVertices(const std::vector<DirectX::XMFLOAT3>& verts) { vertices = verts; }
 	const std::vector<DirectX::XMFLOAT3>& GetVertices() const { return vertices; }
 	size_t GetVertCount() { return vertices.size(); }
-
 private:
 	std::vector<DirectX::XMFLOAT3> vertices;
 };
@@ -34,6 +34,7 @@ public:
 private:
 	MeshData meshData;
 	std::unique_ptr<Buffer> vertexBuffer;
+
 };
 
 #endif

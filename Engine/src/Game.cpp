@@ -12,12 +12,13 @@ Game::~Game()
 
 void Game::BeginPlay()
 {
-	gfx->RegisterObject(std::make_shared<Object>("Triangle", new Mesh({
-		{0.0f, 0.5f, 0.0f},
-		{0.45f, -0.5f, 0.0f},
-		{-0.45f, -0.5f, 0.0f}
-	   }
-	  )));
+    gfx->RegisterObject(std::make_shared<Object>("Triangle", new Mesh(
+        {
+            {0.0f, 0.5f, 0.0f},
+            {0.45f, -0.5f, 0.0f},
+            { -0.45f, -0.5f, 0.0f}
+        }
+    )));
 }
 
 void Game::Update(float dt)

@@ -20,6 +20,7 @@ void Mesh::Render(ID3D11DeviceContext* context)
     if (vertexBuffer)
     {
         vertexBuffer->Bind(context);
+
         context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
         context->Draw(vertexBuffer->GetCount(),0);
     }
