@@ -3,6 +3,7 @@
 
 #include <Windows.h>
 #include <memory>
+#include <vector>
 
 class Directx11;
 class Object;
@@ -14,17 +15,19 @@ public:
 	Graphics(HWND hWnd,int width,int height);
 	~Graphics();
 
+	void RegisterObject(std::shared_ptr<Object> obj);
+
 	void BeginFrame();
 	void EndFrame();
 
-	void RenderObject(const std::shared_ptr<Object>& object);
+	void RenderObjects();
 
 	void SetVsync(bool bEnable);
 	void SetFullScreen(bool bEnable);
 
 private:
 	std::shared_ptr<Directx11> d3d11;
-
+	std::vector<std::shared_ptr<Object>> objects;
 };
 
 #endif

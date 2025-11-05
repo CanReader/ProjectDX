@@ -1,6 +1,8 @@
 #include "Graphics.h"
 #include "Directx11.h"
+#include "Logger.h"
 #include <stdexcept>
+#include "Object.h"
 
 Graphics::Graphics(HWND hWnd, int width, int height)
 {
@@ -13,6 +15,18 @@ Graphics::Graphics(HWND hWnd, int width, int height)
 Graphics::~Graphics()
 {
 }
+ 
+void Graphics::RegisterObject(std::shared_ptr<Object> obj)
+{
+	if (obj && obj->Initialize(d3d11->GetDevice())) {
+		objects.push_back(obj);
+		DX_INFO("Registered object: {}", obj->GetName());
+	}
+	else
+	{
+		DX_ERROR("Failed to register object: {}", obj->GetName());
+	}
+}
 
 void Graphics::BeginFrame() 
 {
@@ -24,17 +38,20 @@ void Graphics::EndFrame()
 	d3d11->EndFrame();
 }
 
-void Graphics::RenderObject(const std::shared_ptr<Object>& object) 
+void Graphics::RenderObjects() 
 {
-	//TODO: Handle rendering objects... (In Next Lecture)
+	for (auto obj : objects)
+		obj->Render(d3d11->GetDeviceContext());
 }
 
 void Graphics::SetFullScreen(bool bEnable) 
 {
 	d3d11->SetFullScreen(bEnable);
+	DX_INFO(bEnable ? "Fullscreen has been enabled" : "Fullscreen has been disabled");
 }
 
 void Graphics::SetVsync(bool bEnable) 
 {
 	d3d11->SetVsync(bEnable);
+	DX_INFO(bEnable ? "Vsync settings has been enabled" : "Vsync settings has been disabled");
 }

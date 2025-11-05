@@ -3,7 +3,6 @@
 
 #include <wrl/client.h>
 #include <D3D11.h>
-#include <D3DX11.h>
 #include <DXGI.h>
 #include <memory>
 
@@ -26,7 +25,11 @@ public:
 
 	inline void SetVsync(bool bEnable) { vsync = bEnable; }
 	inline bool GetVsync() { return vsync; }
+
 	
+	inline ID3D11Device* GetDevice() { return dev.Get(); }
+	inline ID3D11DeviceContext* GetDeviceContext() { return devcon.Get(); }
+
 	inline void SetFullScreen(bool bEnable) { swapChain->SetFullscreenState(bEnable,nullptr); }
 
 private:

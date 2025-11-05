@@ -15,9 +15,6 @@ public:
 	void BeginPlay();
 
 	void Update(float dt);
-	void Render();
-
-	void Run();
 
 private:
 	std::shared_ptr<Graphics> gfx;

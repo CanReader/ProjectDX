@@ -77,7 +77,8 @@ void Window::MessageLoop()
 		}
 		else {
 			gfx->BeginFrame();
-			game->Run();
+			gfx->RenderObjects();
+			game->Update(0);
 			gfx->EndFrame();
 		}
 	}

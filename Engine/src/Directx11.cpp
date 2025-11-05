@@ -1,4 +1,5 @@
 #include "Directx11.h"
+#include "Logger.h"
 
 Directx11::Directx11() : clearColor(new float[4] {0.3,0.4,1.0,1.0})
 {
@@ -75,6 +76,8 @@ bool Directx11::Initialize(HWND hWnd, int width, int height)
 	vp.TopLeftY = 0.0f;
 
 	devcon->RSSetViewports(1,&vp);
+
+	DX_INFO("Directx 11 has been successfully initialized!");
 
 	return true;
 }
