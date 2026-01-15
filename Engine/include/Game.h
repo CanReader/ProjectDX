@@ -20,7 +20,6 @@ private:
 	std::shared_ptr<Graphics> gfx;
 
 	bool isRunning = true;
-
 };
 
 #endif
