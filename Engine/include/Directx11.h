@@ -5,6 +5,7 @@
 #include <D3D11.h>
 #include <DXGI.h>
 #include <memory>
+#include <DebugMessageQueue.h>
 
 class Directx11
 {
@@ -37,6 +38,7 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> devcon;
 	Microsoft::WRL::ComPtr<IDXGISwapChain> swapChain;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> renderTargetView;
+	std::unique_ptr<DebugMessageQueue> queue;
 
 	float* clearColor;
 	bool vsync = false;

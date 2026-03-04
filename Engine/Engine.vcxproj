@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\DebugMessageQueue.cpp" />
     <ClCompile Include="src\Buffer.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Directx11.cpp" />
@@ -30,6 +31,7 @@
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\DebugMessageQueue.h" />
     <ClInclude Include="include\Buffer.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Directx11.h" />

@@ -1,7 +1,7 @@
 #include "Directx11.h"
 #include "Logger.h"
 
-Directx11::Directx11() : clearColor(new float[4] {0.3,0.4,1.0,1.0})
+Directx11::Directx11() : clearColor(new float[4] {0.3,0.4,1.0,1.0}), queue(std::make_unique<DebugMessageQueue>())
 {
 }
 
@@ -54,6 +54,17 @@ bool Directx11::Initialize(HWND hWnd, int width, int height)
 	if (FAILED(hr))
 		return false;
 
+	Microsoft::WRL::ComPtr<ID3D11InfoQueue> info;
+	hr = dev->QueryInterface(__uuidof(ID3D11InfoQueue), reinterpret_cast<void**>(info.GetAddressOf()));
+
+	if (!queue->Initialize(dev.Get()))
+	{
+	#ifdef _DEBUG
+		DX_WARN("Failed to create message queue!");
+	#endif // _DEBUG
+
+	}
+
 	Microsoft::WRL::ComPtr<ID3D11Texture2D> backBuffer;
 	hr = swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(backBuffer.GetAddressOf()));
 
@@ -89,5 +100,6 @@ void Directx11::BeginFrame()
 
 void Directx11::EndFrame()
 {
+	queue->Update();
 	swapChain->Present((UINT)vsync,0);
 }
