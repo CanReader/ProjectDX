@@ -18,7 +18,7 @@ Graphics::~Graphics()
  
 void Graphics::RegisterObject(std::shared_ptr<Object> obj)
 {
-	if (obj && obj->Initialize(d3d11->GetDevice())) {
+	if (obj && obj->Initialize(d3d11->GetDevice(),L"texture.png")) {
 		objects.push_back(obj);
 		DX_INFO("Registered object: {}", obj->GetName());
 	}

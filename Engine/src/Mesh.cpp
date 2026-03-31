@@ -7,7 +7,7 @@ bool Mesh::Initialize(ID3D11Device* device)
 
     vertexBuffer = std::make_unique<Buffer>(BufferType::Vertex);
     if (!vertexBuffer->Create(device,
-        sizeof(DirectX::XMFLOAT3),
+        sizeof(Vertex),
         meshData.GetVertCount(),
         meshData.GetVertices().data()))
         return false;

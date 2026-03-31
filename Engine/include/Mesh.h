@@ -7,13 +7,18 @@
 #include <memory>
 #include "Buffer.h"
 
+struct Vertex {
+	DirectX::XMFLOAT3 Position;
+	DirectX::XMFLOAT2 UV;
+};
+
 class MeshData {
 public:
-	MeshData(std::initializer_list<DirectX::XMFLOAT3> verts, std::initializer_list<uint32_t> inds) :
+	MeshData(std::initializer_list<Vertex> verts, std::initializer_list<uint32_t> inds) :
 		vertices(verts), indices(inds) {}
 
-	void SetVertices(const std::vector<DirectX::XMFLOAT3>& verts) { vertices = verts; }
-	const std::vector<DirectX::XMFLOAT3>& GetVertices() const { return vertices; }
+	void SetVertices(const std::vector<Vertex>& verts) { vertices = verts; }
+	const std::vector<Vertex>& GetVertices() const { return vertices; }
 	size_t GetVertCount() { return vertices.size(); }
 
 	void SetIndices(const std::vector<uint32_t>& inds) { indices = inds; }
@@ -21,7 +26,7 @@ public:
 	size_t GetIndexCount() { return indices.size(); }
 
 private:
-	std::vector<DirectX::XMFLOAT3> vertices;
+	std::vector<Vertex> vertices;
 	std::vector<uint32_t> indices;
 };
 
@@ -31,7 +36,7 @@ class Mesh
 public:
 	Mesh() = default;
 	Mesh(MeshData data) : meshData(data) {}
-	Mesh(std::initializer_list<DirectX::XMFLOAT3> verts, std::initializer_list<uint32_t> inds) : meshData(verts,inds) {}
+	Mesh(std::initializer_list<Vertex> verts, std::initializer_list<uint32_t> inds) : meshData(verts,inds) {}
 	virtual ~Mesh() = default;
 
 	bool Initialize(ID3D11Device* device);

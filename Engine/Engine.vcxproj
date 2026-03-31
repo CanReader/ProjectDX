@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\ImageLoader.cpp" />
     <ClCompile Include="src\DebugMessageQueue.cpp" />
     <ClCompile Include="src\Buffer.cpp" />
     <ClCompile Include="src\Game.cpp" />
@@ -29,8 +30,10 @@
     <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ImageLoader.h" />
     <ClInclude Include="include\DebugMessageQueue.h" />
     <ClInclude Include="include\Buffer.h" />
     <ClInclude Include="include\Game.h" />
@@ -41,6 +44,7 @@
     <ClInclude Include="include\Shader.h" />
     <ClInclude Include="include\Window.h" />
     <ClInclude Include="include\Logger.h" />
+    <ClInclude Include="include\Texture.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
